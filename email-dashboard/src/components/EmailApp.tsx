@@ -17,7 +17,7 @@ import {
   Archive,
   Trash
 } from 'lucide-react';
-import { emailsApi, type EmailCounts } from '../services/api';
+import { emailsApi } from '../services/api';
 
 interface EmailAppProps {}
 
