@@ -91,7 +91,7 @@ const Login: React.FC = () => {
 
           <div className="demo-notice">
             <div className="demo-notice-content">
-              <p>💡 Demo credentials are pre-filled for you</p>
+              <p>💡 Demo credentials are pre-filled</p>
             </div>
           </div>
         </div>

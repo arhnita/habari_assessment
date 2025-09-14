@@ -49,10 +49,10 @@ const Dashboard: React.FC = () => {
             <div className="flex justify-between items-center mb-6">
               <h1 className="text-2xl font-bold text-gray-900">Marketing</h1>
               <div className="flex space-x-2">
-                <button className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50">
+                <button className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-black rounded hover:bg-gray-50">
                   7 Days
                 </button>
-                <button className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50">
+                <button className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-black rounded hover:bg-gray-50">
                   14 Days
                 </button>
                 <button className="px-4 py-2 text-sm font-medium text-white bg-green-600 border border-green-600 rounded hover:bg-green-700">
@@ -64,7 +64,7 @@ const Dashboard: React.FC = () => {
             {/* Single Grid Layout: 3 columns, 3 rows */}
             <div className="grid grid-cols-3 gap-6">
               {/* Row 1, Col 1: Total Spend */}
-              <div className="bg-white rounded-lg border border-gray-200 p-4">
+              <div className="bg-white rounded-lg border border-black p-4">
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="text-sm font-medium text-gray-600">Total Spend</h3>
                   <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
@@ -83,7 +83,7 @@ const Dashboard: React.FC = () => {
               </div>
 
               {/* Row 1, Col 2: Visitor */}
-              <div className="bg-white rounded-lg border border-gray-200 p-4">
+              <div className="bg-white rounded-lg border border-black p-4">
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="text-sm font-medium text-gray-600">Visitor</h3>
                   <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
@@ -102,7 +102,7 @@ const Dashboard: React.FC = () => {
               </div>
 
               {/* Row 1-2, Col 3: Large Acquisition vs Cost Chart (spans 2 rows) */}
-              <div className="row-span-2 bg-white rounded-lg border border-gray-200 p-6">
+              <div className="row-span-2 bg-white rounded-lg border border-black p-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Acquisition vs Cost</h3>
                 <div className="h-80">
                   <ResponsiveContainer width="100%" height="100%">
@@ -133,7 +133,7 @@ const Dashboard: React.FC = () => {
               </div>
 
               {/* Row 2, Col 1: Acquisition */}
-              <div className="bg-white rounded-lg border border-gray-200 p-4">
+              <div className="bg-white rounded-lg border border-black p-4">
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="text-sm font-medium text-gray-600">Acquisition</h3>
                   <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
@@ -152,7 +152,7 @@ const Dashboard: React.FC = () => {
               </div>
 
               {/* Row 2, Col 2: Revenue */}
-              <div className="bg-white rounded-lg border border-gray-200 p-4">
+              <div className="bg-white rounded-lg border border-black p-4">
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="text-sm font-medium text-gray-600">Revenue</h3>
                   <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
@@ -171,7 +171,7 @@ const Dashboard: React.FC = () => {
               </div>
 
               {/* Row 3, Col 1-2: Traffic Source Bar Chart (spans 2 columns) */}
-              <div className="col-span-2 bg-white rounded-lg border border-gray-200 p-6">
+              <div className="col-span-2 bg-white rounded-lg border border-black p-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Traffic Source</h3>
                 <div className="h-64">
                   <ResponsiveContainer width="100%" height="100%">
@@ -187,7 +187,7 @@ const Dashboard: React.FC = () => {
               </div>
 
               {/* Row 3, Col 2: Budget by Platform */}
-              <div className="bg-white rounded-lg border border-gray-200 p-6">
+              <div className="bg-white rounded-lg border border-black p-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Budget by Platform</h3>
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">

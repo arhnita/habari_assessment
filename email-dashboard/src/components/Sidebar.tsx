@@ -78,7 +78,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onSectionChange, currentSection }) =>
   };
 
   return (
-    <aside className="w-64 bg-white border-r border-gray-200 flex flex-col">
+    <aside className="w-64 bg-white border-r border-black flex flex-col">
       {/* Header */}
       <div className="p-4 border-b border-gray-200">
         <div className="flex items-center space-x-2">
@@ -164,7 +164,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onSectionChange, currentSection }) =>
 
       {/* Upgrade Section */}
       <div className="p-4 border-t border-gray-200">
-        <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+        <div className="bg-gray-50 rounded-lg p-4 border border-black">
           <h3 className="font-medium text-gray-900 mb-2">Upgrade to Pro</h3>
           <p className="text-xs text-gray-600 mb-3">
             Are you looking for more features? Check out our Pro version.

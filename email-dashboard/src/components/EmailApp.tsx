@@ -17,7 +17,7 @@ import {
   Archive,
   Trash
 } from 'lucide-react';
-import { emailsApi } from '../services/api';
+import { emailsApi, type EmailCounts } from '../services/api';
 
 interface EmailAppProps {}
 
@@ -25,6 +25,14 @@ const EmailApp: React.FC<EmailAppProps> = () => {
   const [selectedFolder, setSelectedFolder] = useState('inbox');
   const [selectedEmails, setSelectedEmails] = useState<Set<string>>(new Set());
   const [selectAll, setSelectAll] = useState(false);
+
+  // Fetch email counts
+  const { data: emailCounts } = useQuery({
+    queryKey: ['email-counts'],
+    queryFn: () => emailsApi.getEmailCounts(),
+    staleTime: 5 * 60 * 1000, // 5 minutes
+    refetchOnWindowFocus: false,
+  });
 
   // Fetch emails from API with caching
   const { data: emailsData, isLoading, error, refetch } = useQuery({
@@ -44,12 +52,12 @@ const EmailApp: React.FC<EmailAppProps> = () => {
   const totalCount = emailsData?.pagination?.total || 0;
 
   const folders = [
-    { id: 'inbox', label: 'Inbox', icon: Inbox, count: totalCount },
-    { id: 'starred', label: 'Starred', icon: Star, count: 0 },
-    { id: 'sent', label: 'Sent', icon: Send, count: 0 },
-    { id: 'important', label: 'Important', icon: AlertCircle, count: 0 },
-    { id: 'drafts', label: 'Drafts', icon: FileText, count: 0 },
-    { id: 'trash', label: 'Trash', icon: Trash2, count: 0 }
+    { id: 'inbox', label: 'Inbox', icon: Inbox, count: emailCounts?.inbox || totalCount },
+    { id: 'starred', label: 'Starred', icon: Star, count: emailCounts?.starred || 0 },
+    { id: 'sent', label: 'Sent', icon: Send, count: emailCounts?.sent || 0 },
+    { id: 'important', label: 'Important', icon: AlertCircle, count: emailCounts?.important || 0 },
+    { id: 'drafts', label: 'Drafts', icon: FileText, count: emailCounts?.drafts || 0 },
+    { id: 'trash', label: 'Trash', icon: Trash2, count: emailCounts?.trash || 0 }
   ];
 
   // Handler functions

@@ -221,14 +221,7 @@ In production, implement:
 
 ---
 
-## 🎯 Assessment Criteria Addressed
+## 🎯 Author
+Anita Samuel
 
-✅ **Correctness of UI Features**: Search, filtering, and pagination fully implemented
-✅ **Code Organization**: Clean architecture with separation of concerns  
-✅ **Performance Techniques**: Lazy loading, memoization, debouncing, and caching
-✅ **Aesthetic & UX Polish**: Responsive design with accessibility considerations
-✅ **Documentation**: Comprehensive README with technical decisions explained
 
-## 📞 Contact
-
-For questions about implementation decisions or architecture choices, please feel free to reach out!

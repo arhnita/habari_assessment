@@ -152,14 +152,45 @@ export interface EmailFilters {
   sortOrder?: 'asc' | 'desc';
 }
 
+export interface EmailCounts {
+  inbox: number;
+  starred: number;
+  important: number;
+  unread: number;
+  sent: number;
+  drafts: number;
+  trash: number;
+}
+
 export const emailsApi = {
+  async getEmailCounts(): Promise<EmailCounts> {
+    try {
+      const response = await api.get('/emails/counts');
+      return response.data.data;
+    } catch {
+      console.warn('API unavailable for counts, using mock data');
+      return {
+        inbox: 5,
+        starred: 2,
+        important: 1,
+        unread: 3,
+        sent: 10,
+        drafts: 0,
+        trash: 0
+      };
+    }
+  },
+
   async getEmails(filters: EmailFilters = {}): Promise<EmailsResponse> {
     try {
-      // Try real API first, fall back to mock data
+      console.log('📧 Fetching emails from API with filters:', filters);
       const response = await api.get('/emails', { params: filters });
+      console.log('✅ Email API success:', response.data);
       return response.data;
-    } catch (error) {
-      console.warn('API unavailable, using mock data:', error);
+    } catch (error: unknown) {
+      const axiosError = error as { response?: { status: number; statusText: string } };
+      console.warn('📧 Email API failed:', axiosError?.response?.status, axiosError?.response?.statusText);
+      console.warn('🔄 Using mock email data');
       
       // Apply filters to mock data
       let filteredEmails = [...mockEmails];
@@ -246,7 +277,7 @@ export const emailsApi = {
   async markAsRead(id: string): Promise<void> {
     try {
       await api.patch(`/emails/${id}/read`);
-    } catch (error) {
+    } catch {
       console.warn('API unavailable, simulating action');
       // Simulate the action with mock data
       const email = mockEmails.find(e => e.id === id);
@@ -257,7 +288,7 @@ export const emailsApi = {
   async toggleStar(id: string): Promise<void> {
     try {
       await api.patch(`/emails/${id}/star`);
-    } catch (error) {
+    } catch {
       console.warn('API unavailable, simulating action');
       const email = mockEmails.find(e => e.id === id);
       if (email) email.isStarred = !email.isStarred;
@@ -267,7 +298,7 @@ export const emailsApi = {
   async toggleImportant(id: string): Promise<void> {
     try {
       await api.patch(`/emails/${id}/important`);
-    } catch (error) {
+    } catch {
       console.warn('API unavailable, simulating action');
       const email = mockEmails.find(e => e.id === id);
       if (email) email.isImportant = !email.isImportant;
