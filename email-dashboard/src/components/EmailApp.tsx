@@ -19,9 +19,7 @@ import {
 } from 'lucide-react';
 import { emailsApi } from '../services/api';
 
-interface EmailAppProps {}
-
-const EmailApp: React.FC<EmailAppProps> = () => {
+const EmailApp: React.FC = () => {
   const [selectedFolder, setSelectedFolder] = useState('inbox');
   const [selectedEmails, setSelectedEmails] = useState<Set<string>>(new Set());
   const [selectAll, setSelectAll] = useState(false);
@@ -33,6 +31,8 @@ const EmailApp: React.FC<EmailAppProps> = () => {
     staleTime: 5 * 60 * 1000, // 5 minutes
     refetchOnWindowFocus: false,
   });
+
+  
 
   // Fetch emails from API with caching
   const { data: emailsData, isLoading, error, refetch } = useQuery({
@@ -59,6 +59,7 @@ const EmailApp: React.FC<EmailAppProps> = () => {
     { id: 'drafts', label: 'Drafts', icon: FileText, count: emailCounts?.drafts || 0 },
     { id: 'trash', label: 'Trash', icon: Trash2, count: emailCounts?.trash || 0 }
   ];
+
 
   // Handler functions
   const handleSelectAll = () => {

@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { Search, RefreshCw, Bell, MessageSquare, Settings, User, LogOut } from 'lucide-react';
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../hooks/useAuth';
 import { useDebounce } from '../hooks/useDebounce';
 
 interface HeaderProps {
