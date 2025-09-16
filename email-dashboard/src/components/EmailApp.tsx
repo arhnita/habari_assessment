@@ -18,6 +18,7 @@ import {
   Trash
 } from 'lucide-react';
 import { emailsApi } from '../services/api';
+// Fixed TypeScript build errors for deployment
 
 const EmailApp: React.FC = () => {
   const [selectedFolder, setSelectedFolder] = useState('inbox');
