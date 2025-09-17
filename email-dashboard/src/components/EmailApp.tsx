@@ -18,9 +18,12 @@ import {
   Trash
 } from 'lucide-react';
 import { emailsApi } from '../services/api';
-// Fixed TypeScript build errors for deployment
 
-const EmailApp: React.FC = () => {
+interface EmailAppProps {
+  searchTerm?: string;
+}
+
+const EmailApp: React.FC<EmailAppProps> = ({ searchTerm = '' }) => {
   const [selectedFolder, setSelectedFolder] = useState('inbox');
   const [selectedEmails, setSelectedEmails] = useState<Set<string>>(new Set());
   const [selectAll, setSelectAll] = useState(false);
@@ -37,13 +40,14 @@ const EmailApp: React.FC = () => {
 
   // Fetch emails from API with caching
   const { data: emailsData, isLoading, error, refetch } = useQuery({
-    queryKey: ['emails', selectedFolder],
-    queryFn: () => emailsApi.getEmails({ 
-      page: 1, 
-      limit: 15, 
-      sortBy: 'timestamp', 
+    queryKey: ['emails', selectedFolder, searchTerm],
+    queryFn: () => emailsApi.getEmails({
+      page: 1,
+      limit: 15,
+      sortBy: 'timestamp',
       sortOrder: 'desc',
-      view: selectedFolder === 'inbox' ? 'inbox' : selectedFolder 
+      view: selectedFolder === 'inbox' ? 'inbox' : selectedFolder,
+      search: searchTerm || undefined
     }),
     staleTime: 5 * 60 * 1000, // 5 minutes
     refetchOnWindowFocus: false,

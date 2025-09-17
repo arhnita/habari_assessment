@@ -33,7 +33,7 @@ api.interceptors.response.use(
   }
 );
 
-// Mock data for development since API might have issues
+// Mock data for development just incase API have issues
 const mockEmails: Email[] = [
   {
     id: 'email-1',
@@ -215,7 +215,6 @@ export const emailsApi = {
           case 'unread':
             filteredEmails = filteredEmails.filter(email => !email.isRead);
             break;
-          // Add more view filters as needed
         }
       }
       
@@ -267,7 +266,7 @@ export const emailsApi = {
       const response = await api.get(`/emails/${id}`);
       return response.data.data;
     } catch (error) {
-      console.warn('API unavailable, using mock data');
+      console.warn('API unavailable, using mock data', error);
       const email = mockEmails.find(e => e.id === id);
       if (!email) throw new Error('Email not found');
       return email;

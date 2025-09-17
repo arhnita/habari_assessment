@@ -6,17 +6,18 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer, BarC
 
 const Dashboard: React.FC = () => {
   const [currentSection, setCurrentSection] = useState('marketing');
+  const [searchTerm, setSearchTerm] = useState('');
 
   const handleSectionChange = useCallback((section: string) => {
     setCurrentSection(section);
   }, []);
 
   const handleSearch = useCallback((search: string) => {
-    console.log('Searching for:', search);
+    setSearchTerm(search);
   }, []);
 
   const handleRefresh = useCallback(() => {
-    // Implement refresh logic for dashboard
+    // refresh logic for dashboard
     console.log('Refreshing dashboard...');
   }, []);
 
@@ -270,7 +271,7 @@ const Dashboard: React.FC = () => {
           </div>
         );
       case 'apps-email':
-        return <EmailApp />;
+        return <EmailApp searchTerm={searchTerm} />;
       case 'apps-calendar':
       case 'apps-invoice':
       case 'apps-charts':
